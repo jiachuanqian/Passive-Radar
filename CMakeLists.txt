@@ -2,22 +2,27 @@ cmake_minimum_required(VERSION 3.15)
 project(PassiveRadar LANGUAGES CXX CUDA) 
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON) 
-set(CMAKE_PREFIX_PATH "D:/Qt/Qt5.14.2/5.14.2/msvc2017_64") # Qt Kit Dir
+set(CMAKE_PREFIX_PATH "/home/usrp/Qt5.14.2/5.14.2/gcc_64") # Qt Kit Dir
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CUDA_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CUDA_ARCHITECTURES 75)
+#set(CMAKE_CUDA_ARCHITECTURES 75)
 find_package(CUDAToolkit REQUIRED)
 find_package(Qt5 COMPONENTS Widgets Core Gui PrintSupport REQUIRED) # Qt COMPONENTS
-list(APPEND CMAKE_PREFIX_PATH "D:/Program Files (x64)/vcpkg/installed/x64-windows")
-find_package(FFTW3 CONFIG REQUIRED)
+#find_package(FFTW3 REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(FFTW3 REQUIRED fftw3)
 
+# 手动添加头文件路径和库路径
+#include_directories(${FFTW3_INCLUDE_DIRS})
+#link_directories(${FFTW3_LIBRARY_DIRS})
 
-include_directories("D:/Program Files (x64)/vcpkg/installed/x64-windows/include")
+#include_directories("D:/Program Files (x64)/vcpkg/installed/x64-windows/include")
 include_directories("${CUDAToolkit_INCLUDE_DIRS}")
+include_directories("/home/usrp/Desktop/New Folder/Passive Radar/src")
 
 
 set(SRCS
@@ -53,7 +58,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt5::Core
     Qt5::Gui
     Qt5::PrintSupport
-    FFTW3::fftw3
+    ${FFTW3_LIBRARIES}
     CUDA::cudart
     CUDA::cufft
     CUDA::cublas

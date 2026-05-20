@@ -192,7 +192,7 @@ void ProcThread::mphase(UiData uiData)
 void ProcThread::detect(UiData uiData)
 {
     //std::complex<float> *out = new std::complex<float>[GD.Nrd] {};
-    emit ShowResult("¿ªÊ¼´¦Àí" "\n" "-------------------------------------");
+    emit ShowResult("å¼€å§‹å¤„ç†" "\n" "------------------------------------");
     for (size_t i = uiData.tshift; i < uiData.nlength; ++i)
     {
         auto t1 = std::chrono::high_resolution_clock::now();
@@ -259,7 +259,7 @@ void ProcThread::detect(UiData uiData)
 
         if (StopFlag) { break; }
         else {
-            emit ShowResult("µÚ" + QString::number(i) + "Ãë");
+            emit ShowResult("ç¬¬" + QString::number(i) + "æ¬¡");
             //uiData.idx = uiData.idx;
             uiData.theta = beam_idx * uiData.step + uiData.start_deg;
             //std::cout << (uiData.idx % GD.TN) << std::endl;
@@ -273,7 +273,7 @@ void ProcThread::detect(UiData uiData)
         
         //system("pause");
     }
-    emit ShowResult("-------------------------------------" "\n" "´¦ÀíÍê³É");
+    emit ShowResult("------------------------------------" "\n" "å¤„ç†å®Œæˆ");
 }
 
 

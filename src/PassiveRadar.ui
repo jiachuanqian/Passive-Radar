@@ -305,7 +305,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,1">
+        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="4,1">
          <item>
           <widget class="QLineEdit" name="lineEdit">
            <property name="font">
@@ -598,6 +598,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>45</width>
+             <height>25</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <family>Times New Roman</family>
@@ -630,6 +636,12 @@
          </item>
          <item row="0" column="3">
           <widget class="QLineEdit" name="fzero">
+           <property name="minimumSize">
+            <size>
+             <width>45</width>
+             <height>25</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <family>Times New Roman</family>
